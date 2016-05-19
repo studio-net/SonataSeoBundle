@@ -96,13 +96,13 @@ class SeoExtension extends \Twig_Extension
                 if (!empty($content)) {
                     $html .= sprintf("<meta %s=\"%s\" content=\"%s\" />\n",
                         $type,
-                        $this->normalize($name),
-                        $this->normalize($content)
+                        $name,
+                        $content
                     );
                 } else {
                     $html .= sprintf("<meta %s=\"%s\" />\n",
                         $type,
-                        $this->normalize($name)
+                        $name
                     );
                 }
             }
@@ -203,15 +203,5 @@ class SeoExtension extends \Twig_Extension
         }
 
         return $html;
-    }
-
-    /**
-     * @param string $string
-     *
-     * @return mixed
-     */
-    private function normalize($string)
-    {
-        return htmlentities(strip_tags($string), ENT_COMPAT, $this->encoding);
     }
 }
